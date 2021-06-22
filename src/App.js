@@ -1,16 +1,13 @@
 import './App.css';
+import Navbar from './navbar'
+import Home from './Home'
 
 function App() {
-  const title = "Welcome to the new blog";
-  const likes = 50;
-  const person = {name :'arjun', age: 21};
   return (
     <div className="App">
+      <Navbar/> {/*self closing*/}
       <div className="content">
-        <h1>{title}</h1>
-        <p>Liked {likes} times</p>
-        <p>{ 10 }</p>
-        <p>{"hello fools"}</p>
+        <Home></Home>
       </div>
     </div>
   );
