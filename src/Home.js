@@ -9,11 +9,15 @@ const Home = () => {
         { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
     ]);
 
+    const handleDelete = (id) => {
+        const newBlogs = blogs.filter(blog => blog.id !== id);
+        setBlogs(newBlogs);
+    }
+
     return (
         <div className="home">
-            {/*example of a prop*/}
-            <BlogList blogs={blogs} title="All blogs!"/>
-            <BlogList blogs={blogs.filter((blog) => blog.author === 'mario')} title="Arjuns blogs!"/>
+            {/*example(s) of a prop*/}
+            <BlogList blogs={blogs.filter((blog) => blog.author === 'mario')} title="Arjuns blogs!" handleDelete = {handleDelete}/>
         </div>
     );
 }
