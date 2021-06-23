@@ -13,6 +13,7 @@ const Home = () => {
         <div className="home">
             {/*example of a prop*/}
             <BlogList blogs={blogs} title="All blogs!"/>
+            <BlogList blogs={blogs.filter((blog) => blog.author === 'mario')} title="Arjuns blogs!"/>
         </div>
     );
 }
