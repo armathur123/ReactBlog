@@ -15,11 +15,11 @@ function App() {
               <Home></Home> {/* route to home component when path is "/" */}
             </Route>
             <Route path = "/create">
-              <Create></Create> {/*route to home component when path is "/"*/}
+              <Create></Create>
             </Route>
             {/*Route Parameter example */}
             <Route path = "/blogs/:id">
-              <BlogDetails></BlogDetails> {/*route to home component when path is "/"*/}
+              <BlogDetails></BlogDetails>
             </Route>
           </Switch>
         </div>
