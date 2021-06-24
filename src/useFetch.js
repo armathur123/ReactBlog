@@ -26,8 +26,13 @@ const useFetch = (url) => {
                     setError(null);
                 })
                 .catch((e) => {
-                    setIsPending(false);
-                    setError(e.message);
+                    if (e.name === 'AbortError') {
+                        console.log('fetch aborted');
+                    }
+                    else {
+                        setIsPending(false);
+                        setError(e.message);
+                    }
                 })
         }, 1000)
 
