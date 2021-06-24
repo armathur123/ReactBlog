@@ -3,31 +3,23 @@ import BlogList from './BlogList';
 
 const Home = () => {
 
-    const [blogs, setBlogs] = useState([
-        { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
-        { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
-        { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
-    ]);
-
-    const [name, setName] = useState('mario');
-
-
-    const handleDelete = (id) => {
-        const newBlogs = blogs.filter((blog) => blog.id !== id);
-        setBlogs(newBlogs);
-    }
+    const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        console.log('use effect ran');
-        console.log(name);
-    }, [name])
+        /*get request, cant use async on this statement, but could use on whole function*/
+        fetch('http://localhost:8000/blogs')
+            .then(res => {
+                return res.json(); /*passes json into a js object*/
+            })
+            .then((data) => {
+                setBlogs(data);
+            });
+    }, [])
 
     return (
         <div className="home">
             {/*example(s) of a prop*/}
-            <BlogList blogs={blogs.filter((blog) => blog.author === 'mario')} title="Arjuns blogs!" handleDelete = {handleDelete}/>
-            <button onClick = {() => setName('luigi')}>change name</button>
-            <p>{name}</p>
+            {blogs && <BlogList blogs={blogs} title="Arjuns blogs!" />}
         </div>
     );
 }
